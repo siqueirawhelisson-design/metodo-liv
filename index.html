@@ -273,6 +273,17 @@ p + p{margin-top:16px}
 .cta-fixo.on{transform:none}
 @media (max-width:860px){.cta-fixo{display:flex}}
 
+/* redes: ícones de traço fino, mesma família; ao passar ficam dourados e sobem ligeiramente */
+.redes{display:flex;align-items:center;gap:10px}
+.redes a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid currentColor;transition:color .3s,border-color .3s,translate .35s var(--ease-suave),background .3s}
+.redes--claro a{color:var(--vinho);border-color:var(--linha)}
+.redes--claro a:hover{color:var(--marfim);background:var(--vinho);border-color:var(--vinho);translate:0 -3px}
+.redes--escuro{margin-top:26px;justify-content:center}
+.redes--escuro a{color:rgba(249,245,236,.8);border-color:var(--linha-escura)}
+.redes--escuro a:hover{color:var(--vinho);background:var(--dourado);border-color:var(--dourado);translate:0 -3px}
+.segue{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;margin-top:26px;padding-top:22px;border-top:1px solid var(--linha)}
+.segue span{font:600 .72rem/1.6 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;color:var(--marsala)}
+
 /* ---------- Movimento ----------
    Regra: só movimento com função (entrada ao rolar, profundidade nas fotos, resposta ao rato).
    Nada a piscar, flutuar ou rodar. Tudo desliga com prefers-reduced-motion. */
@@ -427,6 +438,7 @@ p + p{margin-top:16px}
           <span>Já esteve na</span>
           <p><b>Forbes</b><b>RTP</b><b>SIC Internacional</b><b>Luxwoman</b><b>JN</b></p>
         </div>
+        <div class="segue rv"><span>Acompanha a Mafalda</span><nav class="redes redes--claro" aria-label="Redes da Mafalda Almeida"><a href="https://www.instagram.com/mafalda.ceo/" target="_blank" rel="noopener" aria-label="Instagram da Mafalda Almeida" title="Instagram"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@MafaldaAlmeidaceo" target="_blank" rel="noopener" aria-label="YouTube da Mafalda Almeida" title="YouTube"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></svg></a><a href="https://www.linkedin.com/in/mafaldaalmeida/" target="_blank" rel="noopener" aria-label="LinkedIn da Mafalda Almeida" title="LinkedIn"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5v6M8 7.5v.2M11.8 16.5v-6M11.8 13.3c0-1.7 1-2.8 2.4-2.8s2.1 1 2.1 2.7v3.3"/></svg></a><a href="https://mafaldaalmeida.com/" target="_blank" rel="noopener" aria-label="Site da Mafalda Almeida" title="Site"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3z"/></svg></a></nav></div>
       </div>
     </div>
   </section>
@@ -490,6 +502,7 @@ p + p{margin-top:16px}
       <p class="rodape__data">27 e 28 de fevereiro de 2027</p>
       <a class="btn" href="#inscricao">Quero o meu lugar <span class="seta">→</span></a>
       <a class="rodape__wa" href="https://wa.me/351935549884?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20M%C3%A9todo%20LIV." target="_blank" rel="noopener">Dúvidas? WhatsApp +351 935 549 884</a>
+      <nav class="redes redes--escuro" aria-label="Redes da Mafalda Almeida"><a href="https://www.instagram.com/mafalda.ceo/" target="_blank" rel="noopener" aria-label="Instagram da Mafalda Almeida" title="Instagram"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@MafaldaAlmeidaceo" target="_blank" rel="noopener" aria-label="YouTube da Mafalda Almeida" title="YouTube"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/></svg></a><a href="https://www.linkedin.com/in/mafaldaalmeida/" target="_blank" rel="noopener" aria-label="LinkedIn da Mafalda Almeida" title="LinkedIn"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5v6M8 7.5v.2M11.8 16.5v-6M11.8 13.3c0-1.7 1-2.8 2.4-2.8s2.1 1 2.1 2.7v3.3"/></svg></a><a href="https://mafaldaalmeida.com/" target="_blank" rel="noopener" aria-label="Site da Mafalda Almeida" title="Site"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3z"/></svg></a></nav>
     </div>
     <div class="rodape__base">
       <span>© <span id="ano"></span> Mafalda Almeida</span>
