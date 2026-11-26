@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- pré-visualização: retirar o noindex quando passar para o domínio final -->
+<meta name="robots" content="noindex, nofollow">
+<title>Método LIV · Mafalda Almeida · 27 e 28 de fevereiro de 2027</title>
+<meta name="description" content="Dois dias com a Mafalda Almeida para descobrires a tua identidade, reconheceres o teu valor e abrires caminho a mais prosperidade na vida e nos negócios.">
+<meta property="og:title" content="Método LIV · Liberdade, Identidade e Valor">
+<meta property="og:description" content="27 e 28 de fevereiro de 2027, com a Mafalda Almeida.">
+<meta property="og:image" content="assets/img/evento-sala.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MÉTODO LIV · tokens medidos no banner e no logo do evento
+   vinho (fundo do banner #440615 / #33040E) · marsala do brand book
+   dourado do arco do logo · marfim do brand book
+   ============================================================ */
+:root{
+  --vinho:#3A0712;          /* escuro dominante: hero e inscrições */
+  --vinho-2:#4A0B19;
+  --marsala:#6B1F2B;        /* eyebrows e botão em fundo claro: 10.6:1 sobre marfim */
+  --marfim:#F9F5EC;         /* claro dominante */
+  --areia:#F1E9DA;          /* claro alternado */
+  --texto:#2B1A1D;
+  --texto-suave:#6A5558;    /* 6.4:1 sobre marfim */
+  --dourado:#D9A440;        /* filetes, números, botão sobre vinho (texto vinho 7.9:1) */
+  --dourado-claro:#E8C27A;  /* dourado legível sobre vinho: 9.2:1 */
+  --linha:rgba(58,7,18,.14);
+  --linha-escura:rgba(249,245,236,.16);
+
+  --f-titulo:'Playfair Display', Georgia, serif;
+  --f-corpo:'Montserrat', system-ui, sans-serif;
+
+  --sec:clamp(76px,10vw,136px);
+  --max:1240px;
+  --pad:clamp(20px,5vw,64px);
+  --gap-col:clamp(40px,6vw,90px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{font:400 16.5px/1.72 var(--f-corpo);color:var(--texto);background:var(--marfim);-webkit-font-smoothing:antialiased}
+@media (max-width:620px){body{font-size:16px}}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+::selection{background:var(--marsala);color:var(--marfim)}
+:focus-visible{outline:2px solid var(--dourado);outline-offset:3px}
+.saltar{position:absolute;left:-9999px;top:8px;background:var(--vinho);color:var(--marfim);padding:10px 16px;border-radius:999px;z-index:99}
+.saltar:focus{left:8px}
+.so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Tipografia ---------- */
+h1,h2,h3{font-family:var(--f-titulo);font-weight:400;color:var(--vinho);text-wrap:balance}
+h2{font-size:clamp(2rem,4vw,3.3rem);line-height:1.1;letter-spacing:-.015em;max-width:18ch}
+h3{font-size:clamp(1.3rem,2vw,1.75rem);line-height:1.25}
+h2 em{font-style:italic;color:var(--marsala)}
+p{max-width:60ch;text-wrap:pretty}
+.lead{font-size:clamp(1.05rem,1.2vw,1.18rem);color:var(--texto-suave)}
+.eyebrow{display:flex;align-items:flex-start;gap:12px;font:600 .74rem/1.6 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;color:var(--marsala)}
+.eyebrow::before{content:"";flex:none;width:28px;height:1px;margin-top:.8em;background:var(--dourado)}
+@media (max-width:520px){.eyebrow{letter-spacing:.16em}}
+.eyebrow + h2{margin-top:20px}
+h2 + p,h2 + .lead{margin-top:22px}
+p + p{margin-top:16px}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.sec{padding:var(--sec) 0}
+.sec--areia{background:var(--areia)}
+.sec--escura{background:var(--vinho);color:rgba(249,245,236,.8)}
+.sec--escura h2,.sec--escura h3{color:var(--marfim)}
+.sec--escura h2 em{color:var(--dourado-claro)}
+.sec--escura .eyebrow{color:var(--dourado-claro)}
+.sec-cab{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap-col);align-items:end;margin-bottom:clamp(48px,6vw,80px)}
+.sec-cab .lead{margin:0}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--gap-col);align-items:center}
+@media (max-width:1000px){.split,.sec-cab{grid-template-columns:1fr}.sec-cab{gap:22px}}
+
+/* ---------- Logo (reprodução em SVG; trocar pelo ficheiro oficial quando chegar) ---------- */
+.logo{display:block;width:100%;height:auto;color:var(--marfim)}
+.logo__lema{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:.2em .9em;
+  font:500 clamp(.72rem,1.5vw,1rem)/1.4 var(--f-corpo);letter-spacing:.26em;text-transform:uppercase;color:var(--marfim)}
+.logo__lema i{width:.5em;height:.5em;border-radius:50%;background:var(--dourado)}
+
+/* ---------- Botões ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;overflow:hidden;isolation:isolate;
+  padding:17px 32px;border-radius:999px;border:1px solid var(--vinho);
+  font:600 14px/1 var(--f-corpo);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  background:var(--vinho);color:var(--marfim);transition:color .38s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--marsala);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.btn:hover::before{transform:scaleX(1)}
+.btn .seta{transition:transform .3s var(--ease)}
+.btn:hover .seta{transform:translateX(4px)}
+/* sobre vinho: dourado chapado com texto vinho (7.9:1) */
+.btn--ouro,.sec--escura .btn,.hero .btn{background:var(--dourado);border-color:var(--dourado);color:var(--vinho)}
+.btn--ouro::before,.sec--escura .btn::before,.hero .btn::before{background:var(--marfim)}
+.link{font-weight:500;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;transition:color .3s}
+.micro{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:.86rem;color:var(--texto-suave)}
+.micro::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--dourado)}
+
+/* ---------- Header fixo ---------- */
+.topo{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
+.topo__logo{display:block;width:118px;transform-origin:left center;transition:transform .35s var(--ease),opacity .35s}
+.topo__nav{display:flex;gap:32px;list-style:none}
+.topo__nav a{font-size:.82rem;letter-spacing:.08em;text-decoration:none;color:var(--marfim);opacity:.85}
+.topo__nav a:hover{opacity:1}
+.topo .btn{padding:12px 22px;font-size:12px;background:var(--dourado);border-color:var(--dourado);color:var(--vinho)}
+.topo .btn::before{background:var(--marfim)}
+.topo.rolado{background:rgba(58,7,18,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--linha-escura)}
+.topo.rolado .topo__logo{transform:scale(.82)}
+@media (max-width:960px){.topo__nav{display:none}}
+/* o logo do topo só aparece depois do hero (no hero já está o logo grande) */
+.topo:not(.rolado) .topo__logo{opacity:0;pointer-events:none}
+
+/* ---------- Hero (baseado no banner vertical do evento) ---------- */
+.hero{position:relative;min-height:min(100svh,980px);display:flex;align-items:flex-end;background:var(--vinho);color:var(--marfim);overflow:hidden;isolation:isolate}
+.hero__foto{position:absolute;inset:0 0 auto;height:78%;z-index:-2}
+/* enquadramento: o rosto da Mafalda fica acima do logo, que assenta sobre o corpo (como no banner) */
+.hero__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 72%}
+@media (min-width:701px){.hero__foto{height:72%}}
+/* véu: a foto desce até ao vinho, como no banner (gradiente linear de transição, sem glow) */
+.hero__foto::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(58,7,18,.35) 0%,rgba(58,7,18,.25) 30%,rgba(58,7,18,.82) 72%,var(--vinho) 100%)}
+/* padding-top é só o mínimo: o conteúdo assenta na base do ecrã para a data e o botão ficarem visíveis sem scroll */
+.hero__conteudo{width:100%;max-width:820px;margin:0 auto;padding:26vh var(--pad) clamp(40px,6vh,72px);text-align:center}
+.hero .logo{max-width:clamp(260px,26vw,360px);margin:0 auto}
+.hero .logo__lema{margin-top:10px}
+.promessa{margin:clamp(28px,4vh,40px) auto 0;font:400 clamp(1.55rem,3.1vw,2.5rem)/1.2 var(--f-titulo);color:var(--marfim);max-width:22ch;text-wrap:balance}
+.promessa em{color:var(--dourado-claro)}
+.hero__sub{margin:18px auto 0;max-width:46ch;color:rgba(249,245,236,.78)}
+.hero__acao{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:16px;margin-top:clamp(28px,4vh,40px)}
+.data{display:flex;flex-direction:column;justify-content:center;padding:12px 28px;border:1px solid rgba(217,164,64,.7);border-radius:14px;line-height:1.15}
+.data strong{font:500 clamp(1.15rem,1.8vw,1.4rem)/1.15 var(--f-titulo);text-transform:uppercase;letter-spacing:.02em}
+.data span{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dourado-claro)}
+.data span::before,.data span::after{content:"";width:18px;height:1px;background:var(--dourado)}
+.hero .btn{padding-inline:36px}
+.hero .micro{justify-content:center;color:rgba(249,245,236,.62)}
+@media (max-width:700px){
+  .hero__foto{height:62%}
+  .hero__conteudo{padding-top:34vh}
+  .hero .logo{max-width:250px}
+  .hero__acao{flex-direction:column;align-items:center}
+  .data,.hero .btn{width:100%;max-width:340px}
+}
+
+/* ---------- Método ---------- */
+.pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,56px);list-style:none}
+.pilares li{border-top:1px solid var(--linha);padding-top:28px}
+.pilares b{display:block;font:400 clamp(3.4rem,6vw,5rem)/1 var(--f-titulo);color:var(--dourado)}
+.pilares h3{margin-top:14px}
+.pilares p{margin-top:12px;color:var(--texto-suave)}
+.nota{margin-top:28px;font-size:.86rem;color:var(--texto-suave)}
+@media (max-width:860px){.pilares{grid-template-columns:1fr}}
+
+.levas{margin-top:clamp(72px,9vw,120px);grid-template-columns:.8fr 1.2fr}
+.levas__foto{border-radius:8px;overflow:hidden;aspect-ratio:4/5}
+.levas__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.lista{list-style:none;border-top:1px solid var(--linha);counter-reset:n;margin-top:30px}
+.lista li{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--linha);counter-increment:n}
+.lista li::before{content:counter(n,decimal-leading-zero);font:italic 400 1.35rem/1.3 var(--f-titulo);color:var(--dourado)}
+.levas .btn{margin-top:36px}
+@media (max-width:1000px){.levas{grid-template-columns:1fr}.levas__foto{aspect-ratio:4/3;max-height:520px}}
+
+/* ---------- Mentora ---------- */
+.mentora{grid-template-columns:.85fr 1.15fr;align-items:start}
+.arco{border-radius:999px 999px 8px 8px;overflow:hidden;aspect-ratio:4/5;object-fit:cover;object-position:50% 35%;width:100%}
+.citacao{margin-top:26px;padding-left:22px;border-left:1px solid var(--dourado);font:italic 400 clamp(1.2rem,1.8vw,1.5rem)/1.4 var(--f-titulo);color:var(--vinho);max-width:30ch}
+.mentora .bio{margin-top:26px}
+.factos{display:flex;flex-wrap:wrap;gap:22px 0;margin-top:34px;border-top:1px solid var(--linha);padding-top:22px}
+.factos div{padding:0 24px;border-left:1px solid var(--linha)}
+.factos div:first-child{padding-left:0;border-left:0}
+.factos strong{display:block;font:400 clamp(1.35rem,2vw,1.7rem)/1.15 var(--f-titulo);color:var(--vinho)}
+.factos span{font-size:.82rem;color:var(--texto-suave)}
+.media{margin-top:26px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--texto-suave)}
+.media b{font-weight:600;color:var(--texto)}
+.testemunhos{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.testemunhos blockquote{border-top:1px solid var(--linha);padding-top:18px}
+.testemunhos p{font:italic 400 1.12rem/1.4 var(--f-titulo);color:var(--vinho)}
+.testemunhos cite{display:block;margin-top:10px;font:500 .8rem/1.4 var(--f-corpo);font-style:normal;color:var(--texto-suave)}
+@media (max-width:1000px){.mentora{grid-template-columns:1fr}.mentora .arco{max-width:460px}}
+@media (max-width:560px){.testemunhos{grid-template-columns:1fr}.factos div{padding:0 16px}}
+
+/* ---------- Inscrições + fecho ---------- */
+.inscricao{grid-template-columns:1.05fr .95fr}
+.carta{margin-top:26px;max-width:46ch}
+.assinatura{margin-top:18px;font:italic 400 1.6rem/1 var(--f-titulo);color:var(--dourado-claro)}
+.bilhete{background:var(--marfim);color:var(--texto);border-radius:18px;overflow:hidden}
+.bilhete__topo{padding:clamp(28px,4vw,40px)}
+.bilhete__tipo{font:600 .74rem/1.6 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;color:var(--marsala)}
+.bilhete__preco{margin-top:10px;font:400 clamp(2.6rem,5vw,3.6rem)/1 var(--f-titulo);color:var(--vinho)}
+.bilhete__preco small{font:400 .9rem var(--f-corpo);color:var(--texto-suave)}
+.inclui{list-style:none;margin-top:24px;border-top:1px solid var(--linha)}
+.inclui li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--linha);font-size:.95rem}
+.inclui li::before{content:"";flex:none;width:10px;height:6px;margin-top:.55em;border-left:1.5px solid var(--marsala);border-bottom:1.5px solid var(--marsala);transform:rotate(-45deg)}
+.bilhete .btn{width:100%;margin-top:28px;background:var(--vinho);border-color:var(--vinho);color:var(--marfim)}
+.bilhete .btn::before{background:var(--marsala)}
+.bilhete__talao{display:flex;justify-content:space-between;gap:12px;padding:16px clamp(28px,4vw,40px);border-top:1.5px dashed rgba(58,7,18,.25);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--texto-suave)}
+@media (max-width:1000px){.inscricao{grid-template-columns:1fr}}
+
+/* ---------- Rodapé ---------- */
+.rodape{background:#2A040D;color:rgba(249,245,236,.6);padding:56px 0 32px;font-size:.86rem}
+.rodape a{color:var(--marfim);text-decoration:none}
+.rodape__topo{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
+.rodape .logo{width:120px}
+.rodape a.credito{color:inherit;display:inline-block;padding:12px 0;margin:-12px 0}
+.credito strong{color:var(--dourado-claro);font-weight:600}
+.credito:hover strong{text-decoration:underline;text-underline-offset:3px}
+.rodape__base{margin-top:40px;padding-top:20px;border-top:1px solid var(--linha-escura);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- CTA fixo mobile ---------- */
+.cta-fixo{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;display:none;transform:translateY(140%);transition:transform .45s var(--ease)}
+.cta-fixo .btn{width:100%;background:var(--dourado);border-color:var(--dourado);color:var(--vinho);box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+.cta-fixo.on{transform:none}
+@media (max-width:860px){.cta-fixo{display:flex}}
+
+/* ---------- Reveal ---------- */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<!-- Logo reutilizável. O arco dourado faz parte do logo (pedido do cliente). -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="ouro" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#B9822A"/>
+      <stop offset=".55" stop-color="#E9B95A"/>
+      <stop offset="1" stop-color="#C98F2E"/>
+    </linearGradient>
+    <symbol id="logo-liv" viewBox="0 0 600 300">
+      <text x="300" y="64" text-anchor="middle" fill="currentColor" font-family="Montserrat, sans-serif" font-weight="400" font-size="42" letter-spacing="17">MÉTODO</text>
+      <text x="296" y="262" text-anchor="middle" fill="currentColor" font-family="'Playfair Display', Georgia, serif" font-weight="500" font-size="232" letter-spacing="-4">LIV</text>
+      <path d="M196 284 C250 276 286 258 336 268 C392 280 452 286 494 236 C540 178 534 74 470 38 C452 28 432 22 412 20" fill="none" stroke="url(#ouro)" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="saltar" href="#conteudo">Saltar para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <div class="wrap">
+    <a class="topo__logo" href="#" aria-label="Método LIV, voltar ao início"><svg class="logo" viewBox="0 0 600 300"><use href="#logo-liv"/></svg></a>
+    <ul class="topo__nav">
+      <li><a href="#metodo">O método</a></li>
+      <li><a href="#mentora">A mentora</a></li>
+      <li><a href="#inscricao">Inscrição</a></li>
+    </ul>
+    <a class="btn" data-cta href="#inscricao">Inscrever-me</a>
+  </div>
+</header>
+
+<main id="conteudo">
+  <!-- 1 · HERO -->
+  <section class="hero">
+    <div class="hero__foto">
+      <picture>
+        <source media="(max-width:700px)" srcset="assets/img/evento-sala-m.webp">
+        <img src="assets/img/evento-sala.webp" alt="Mafalda Almeida de braços abertos diante de uma sala cheia de mulheres num dos seus eventos" width="2000" height="1333" fetchpriority="high">
+      </picture>
+    </div>
+    <div class="hero__conteudo">
+      <h1 class="rv">
+        <span class="so-leitor">Método LIV: Liberdade, Identidade e Valor</span>
+        <svg class="logo" viewBox="0 0 600 300" aria-hidden="true"><use href="#logo-liv"/></svg>
+        <span class="logo__lema" aria-hidden="true">Liberdade <i></i> Identidade <i></i> Valor</span>
+      </h1>
+      <p class="promessa rv" style="--i:1">A tua prosperidade nunca vai além de <em>quem acreditas ser.</em></p>
+      <p class="hero__sub rv" style="--i:2">Dois dias com a Mafalda Almeida para descobrires a tua identidade, reconheceres o teu valor e abrires caminho a mais prosperidade na tua vida e no teu negócio.</p>
+      <div class="hero__acao rv" style="--i:3">
+        <div class="data"><strong>27 e 28 de fevereiro</strong><span>de 2027</span></div>
+        <a class="btn" data-cta href="#inscricao">Quero o meu lugar <span class="seta">→</span></a>
+      </div>
+      <p class="micro rv" style="--i:4" data-local>Evento presencial · Local a anunciar</p>
+    </div>
+  </section>
+
+  <!-- 2 · O MÉTODO -->
+  <section class="sec" id="metodo">
+    <div class="wrap">
+      <div class="sec-cab">
+        <div>
+          <p class="eyebrow rv">O Método LIV</p>
+          <h2 class="rv">A prosperidade começa <em>em quem és.</em></h2>
+        </div>
+        <p class="lead rv" style="--i:1">Podes trabalhar mais do que nunca e ver o resultado ficar sempre no mesmo sítio, ou saber que cobras menos do que vales e continuar a aceitar. Quase nunca é falta de esforço ou de estratégia, é a imagem que tens de ti a decidir até onde te deixas ir.</p>
+      </div>
+
+      <ol class="pilares">
+        <li class="rv"><b>I</b><h3>Identidade</h3><p>Descobres quem és por trás dos papéis que foste assumindo e dás nome ao padrão que te tem mantido no mesmo patamar.</p></li>
+        <li class="rv" style="--i:1"><b>V</b><h3>Valor</h3><p>Reconheces o teu valor e passas a vê-lo refletido no que cobras, no que aceitas e na forma como te apresentas.</p></li>
+        <li class="rv" style="--i:2"><b>L</b><h3>Liberdade</h3><p>Com clareza sobre quem és e quanto vales, voltas a escolher a vida e o negócio que queres, com mais autonomia e prosperidade.</p></li>
+      </ol>
+      <p class="nota rv">O nome lê-se LIV, mas a transformação acontece de dentro para fora.</p>
+
+      <div class="split levas">
+        <div class="levas__foto rv"><img src="assets/img/mafalda-palco.webp" alt="Mafalda Almeida a falar para um grupo de participantes" width="1000" height="1501" loading="lazy"></div>
+        <div>
+          <h3 class="rv">O que levas destes dois dias</h3>
+          <ol class="lista">
+            <li class="rv"><p>O padrão que te tem segurado, identificado e com nome.</p></li>
+            <li class="rv" style="--i:1"><p>Uma relação nova com o teu valor e com o dinheiro que deixas entrar na tua vida.</p></li>
+            <li class="rv" style="--i:2"><p>Clareza e coragem para as próximas decisões, na vida e nos negócios.</p></li>
+          </ol>
+          <a class="btn rv" data-cta href="#inscricao">Quero viver o Método LIV <span class="seta">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · A MENTORA -->
+  <section class="sec sec--areia" id="mentora">
+    <div class="wrap split mentora">
+      <img class="arco rv" src="assets/img/mafalda-retrato.webp" alt="Retrato de Mafalda Almeida" width="1000" height="1500" loading="lazy">
+      <div>
+        <p class="eyebrow rv">Quem te conduz</p>
+        <h2 class="rv">Mafalda <em>Almeida.</em></h2>
+        <blockquote class="citacao rv">«Ajudo pessoas e empresas poderosas a recordar o quão poderosas são.»</blockquote>
+        <!-- PENDENTE: confirmar com a Mafalda a formação em Oxford (só liderança ou também coaching/PNL) antes de a acrescentar. -->
+        <p class="bio rv">Há quase uma década trocou um cargo de liderança no mundo corporativo pelo propósito de elevar pessoas. Hoje é mentora, coach executiva e analista comportamental, especialista em liderança, inteligência emocional, PNL e análise DISC, e acompanha mulheres e empresas a liderar com presença, confiança e resultados.</p>
+        <div class="factos rv">
+          <!-- PENDENTE: substituir por números de impacto reais (pessoas acompanhadas, eventos, anos) -->
+          <div><strong>2 livros</strong><span>publicados</span></div>
+          <div><strong>ICC</strong><span>coach internacional</span></div>
+          <div><strong>Rising Group</strong><span>fundadora e CEO</span></div>
+        </div>
+        <!-- PENDENTE: confirmar a lista de media (tirada dos logótipos do site dela) -->
+        <p class="media rv">Presença em <b>Forbes</b> · <b>RTP</b> · <b>SIC Internacional</b> · <b>Luxwoman</b> · <b>JN</b></p>
+        <div class="testemunhos">
+          <blockquote class="rv"><p>«A Mafalda despertou-me para o melhor de mim.»</p><cite>Filipa Queimado, Diretora de Recursos Humanos</cite></blockquote>
+          <blockquote class="rv" style="--i:1"><p>«Senti que podia ser ambiciosa.»</p><cite>Filipa Carvalho, Direção Logística</cite></blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · INSCRIÇÃO + FECHO -->
+  <section class="sec sec--escura" id="inscricao">
+    <div class="wrap split inscricao">
+      <div>
+        <p class="eyebrow rv">Inscrição · 27 e 28 de fevereiro de 2027</p>
+        <h2 class="rv">O teu próximo patamar começa <em>em fevereiro.</em></h2>
+        <!-- PENDENTE: texto proposto, validar com a Mafalda -->
+        <p class="carta rv">Ao longo dos anos acompanhei mulheres com tudo para crescer que continuavam a viver abaixo do que valem, e quase nunca era falta de competência. Nestes dois dias quero que vejas em ti o que eu já vejo, e que saias de lá com coragem para o assumir.</p>
+        <p class="assinatura rv">Mafalda</p>
+      </div>
+      <div class="bilhete rv" style="--i:1">
+        <div class="bilhete__topo">
+          <p class="bilhete__tipo" data-dado="bilhete">Bilhete</p>
+          <p class="bilhete__preco" data-dado="preco">PENDENTE</p>
+          <ul class="inclui">
+            <li>Dois dias presenciais com a Mafalda Almeida</li>
+            <li>O Método LIV completo: Identidade, Valor e Liberdade</li>
+            <li data-dado="local">Local a anunciar</li>
+          </ul>
+          <a class="btn" data-cta href="#inscricao">Quero o meu lugar <span class="seta">→</span></a>
+          <p class="micro">Lugares limitados.</p>
+        </div>
+        <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape__topo">
+      <svg class="logo" viewBox="0 0 600 300" role="img" aria-label="Método LIV"><use href="#logo-liv"/></svg>
+      <p>Uma iniciativa de <a href="https://mafaldaalmeida.com/" target="_blank" rel="noopener">Mafalda Almeida</a> · <a href="https://www.livroreclamacoes.pt/" target="_blank" rel="noopener">Livro de Reclamações</a></p>
+    </div>
+    <div class="rodape__base">
+      <span>© <span id="ano"></span> Mafalda Almeida</span>
+      <a class="credito" href="https://www.instagram.com/ogrupocado/" target="_blank" rel="noopener">Design e desenvolvimento: <strong>Grupo Cado</strong></a>
+    </div>
+  </div>
+</footer>
+
+<div class="cta-fixo" id="ctaFixo"><a class="btn" data-cta href="#inscricao">Quero o meu lugar</a></div>
+
+<script>
+/* ===== DADOS: tudo o que muda fica aqui ===== */
+const DADOS = {
+  inscricao: '',            // PENDENTE: link de pagamento/inscrição (o mesmo do QR code do banner)
+  bilhete: 'Bilhete',       // PENDENTE: nome da modalidade
+  preco: 'PENDENTE',        // ex.: '197 €'
+  local: 'Local a anunciar' // PENDENTE: local do evento
+};
+
+document.documentElement.classList.add('js');
+document.getElementById('ano').textContent = new Date().getFullYear();
+
+/* Preenche os dados no bilhete e no hero */
+document.querySelectorAll('[data-dado]').forEach(el => { const v = DADOS[el.dataset.dado]; if (v) el.textContent = v; });
+document.querySelector('[data-local]').textContent = 'Evento presencial · ' + DADOS.local;
+
+/* Todos os botões levam ao mesmo destino */
+if (DADOS.inscricao) document.querySelectorAll('[data-cta]').forEach(a => {
+  a.href = DADOS.inscricao; a.target = '_blank'; a.rel = 'noopener';
+});
+
+/* Header: ganha fundo depois do hero começar a sair */
+const topo = document.getElementById('topo');
+const onScroll = () => topo.classList.toggle('rolado', scrollY > innerHeight * .6);
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* Reveal */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* CTA fixo mobile: aparece depois do hero, some na inscrição e no rodapé */
+const cta = document.getElementById('ctaFixo');
+let passouHero = false, noFim = false;
+const upd = () => cta.classList.toggle('on', passouHero && !noFim);
+new IntersectionObserver(([e]) => { passouHero = !e.isIntersecting; upd(); }).observe(document.querySelector('.hero'));
+const vis = new Set();
+const ioFim = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? vis.add(e.target) : vis.delete(e.target)); noFim = vis.size > 0; upd(); });
+[document.getElementById('inscricao'), document.querySelector('.rodape')].forEach(el => ioFim.observe(el));
+</script>
+</body>
+</html>
