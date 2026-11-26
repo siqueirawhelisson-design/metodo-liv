@@ -204,7 +204,22 @@ p + p{margin-top:16px}
 @media (max-width:560px){.testemunhos{grid-template-columns:1fr}.factos div{padding:0 16px}}
 
 /* ---------- Inscrições + fecho ---------- */
-.inscricao{grid-template-columns:1.05fr .95fr}
+.inscricao{grid-template-columns:1fr 1fr;align-items:end}
+.inscricao .carta{margin-top:0}
+.bilhetes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);margin-top:clamp(48px,6vw,72px);align-items:stretch}
+.bilhete{display:flex;flex-direction:column}
+.bilhete__topo{flex:1;display:flex;flex-direction:column}
+.bilhete__topo .btn{margin-top:auto}
+.inclui{margin-bottom:28px}
+.bilhete__nota{margin-top:8px;font-size:.88rem;color:var(--texto-suave)}
+/* destaque do duplo: contorno dourado chapado de 2px e faixa no topo (sem brilho) */
+.bilhete--destaque{box-shadow:0 0 0 2px var(--dourado)}
+.bilhete__faixa{background:var(--dourado);color:var(--vinho);text-align:center;padding:10px 16px;font:600 .72rem/1.4 var(--f-corpo);letter-spacing:.2em;text-transform:uppercase;max-width:none}
+.bilhete.bilhete--destaque .btn{background:var(--dourado);border-color:var(--dourado);color:var(--vinho)}
+.bilhete.bilhete--destaque .btn::before{background:var(--vinho)}
+.bilhete.bilhete--destaque .btn:hover{color:var(--marfim)}
+.bilhetes__micro{margin:26px auto 0;text-align:center;font-size:.86rem;color:rgba(249,245,236,.62);max-width:none}
+@media (max-width:860px){.bilhetes{grid-template-columns:1fr}.bilhete--destaque{order:-1}}
 .carta{margin-top:26px;max-width:46ch}
 .assinatura{margin-top:18px;font:italic 400 1.6rem/1 var(--f-titulo);color:var(--dourado-claro)}
 .bilhete{background:var(--marfim);color:var(--texto);border-radius:18px;overflow:hidden}
@@ -240,12 +255,64 @@ p + p{margin-top:16px}
 .cta-fixo.on{transform:none}
 @media (max-width:860px){.cta-fixo{display:flex}}
 
-/* ---------- Reveal ---------- */
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+/* ---------- Movimento ----------
+   Regra: só movimento com função (entrada ao rolar, profundidade nas fotos, resposta ao rato).
+   Nada a piscar, flutuar ou rodar. Tudo desliga com prefers-reduced-motion. */
+:root{--ease-suave:cubic-bezier(.16,1,.3,1)}
+
+/* entrada ao rolar: sobe e aparece, em cascata (--i) */
+.js .rv{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease-suave),transform 1.1s var(--ease-suave);transition-delay:calc(var(--i,0) * 90ms)}
 .js .rv.in{opacity:1;transform:none}
+/* fotos: abrem de baixo para cima como uma cortina, sem deslocar a página */
+.js .rv-foto{clip-path:inset(100% 0 0 0);transition:clip-path 1.3s var(--ease-suave)}
+.js .rv-foto.in{clip-path:inset(0 0 0 0)}
+/* filete dos eyebrows desenha-se da esquerda */
+.js .eyebrow.rv::before{transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease-suave) .25s}
+.js .eyebrow.rv.in::before{transform:scaleX(1)}
+/* linha por cima de cada pilar L-I-V desenha-se quando o pilar entra */
+.pilares li{position:relative;border-top:0}
+.pilares li::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--linha);transform-origin:left;transition:transform 1.2s var(--ease-suave) calc(var(--i,0) * 90ms + .1s)}
+.js .pilares li.rv::before{transform:scaleX(0)}
+.js .pilares li.rv.in::before{transform:scaleX(1)}
+
+/* hero: a foto entra devagar (ligeiro zoom a assentar), o resto em cascata */
+.js .hero__img{animation:fotoEntra 1.8s var(--ease-suave) both}
+@keyframes fotoEntra{from{opacity:0;scale:1.06}to{opacity:1;scale:1}}
+
+/* profundidade: as fotos andam um pouco mais devagar que a página (translate controlado no JS) */
+.levas__foto img{scale:1.12;transition:scale 1.2s var(--ease-suave)}
+[data-parallax]{will-change:translate}
+
+/* ---------- Respostas ao rato ---------- */
+@media (hover:hover){
+  .btn{transition:color .38s var(--ease),translate .35s var(--ease-suave),box-shadow .35s var(--ease-suave)}
+  .btn:hover{translate:0 -2px;box-shadow:0 16px 30px -16px rgba(20,4,8,.55)}
+  .btn:active{translate:0 0;transition-duration:.1s}
+  /* bilhetes levantam ligeiramente */
+  .bilhete{transition:translate .5s var(--ease-suave),box-shadow .5s var(--ease-suave)}
+  .bilhete:hover{translate:0 -6px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+  .bilhete.bilhete--destaque:hover{box-shadow:0 0 0 2px var(--dourado),0 30px 60px -30px rgba(0,0,0,.6)}
+  /* letras L, I, V sobem ao passar */
+  .pilares b{transition:translate .5s var(--ease-suave)}
+  .pilares li:hover b{translate:0 -8px}
+  /* números da lista avançam */
+  .lista li::before{transition:translate .4s var(--ease-suave)}
+  .lista li:hover::before{translate:6px 0}
+  /* foto do corredor aproxima */
+  .levas__foto:hover img{scale:1.17}
+  /* menu: sublinhado que cresce da esquerda */
+  .topo__nav a{background:linear-gradient(currentColor,currentColor) left bottom/0 1px no-repeat;padding-bottom:4px;transition:background-size .4s var(--ease-suave),opacity .3s}
+  .topo__nav a:hover{background-size:100% 1px}
+  .media b{transition:color .3s}
+  .media b:hover{color:var(--marsala)}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .js .rv{opacity:1;transform:none}
+  .js .rv-foto{clip-path:none}
+  .js .pilares li.rv::before,.js .eyebrow.rv::before{transform:none}
+  [data-parallax]{translate:none!important}
 }
 </style>
 </head>
@@ -305,7 +372,7 @@ p + p{margin-top:16px}
       </ol>
 
       <div class="split levas">
-        <div class="levas__foto rv"><img src="assets/img/mafalda-corredor.webp" alt="Mafalda Almeida de braços abertos no corredor de uma sala cheia, durante um dos seus eventos" width="1400" height="933" loading="lazy"></div>
+        <div class="levas__foto rv rv-foto"><img data-parallax="0.08" src="assets/img/mafalda-corredor.webp" alt="Mafalda Almeida de braços abertos no corredor de uma sala cheia, durante um dos seus eventos" width="1400" height="933" loading="lazy"></div>
         <div>
           <h3 class="rv">O que levas destes dois dias</h3>
           <ol class="lista">
@@ -323,7 +390,7 @@ p + p{margin-top:16px}
   <!-- 3 · A MENTORA -->
   <section class="sec sec--areia" id="mentora">
     <div class="wrap split mentora">
-      <img class="arco rv" src="assets/img/mafalda-retrato.webp" alt="Retrato de Mafalda Almeida" width="1000" height="1500" loading="lazy">
+      <img class="arco rv rv-foto" data-parallax="0.06" src="assets/img/mafalda-retrato.webp" alt="Retrato de Mafalda Almeida" width="1000" height="1500" loading="lazy">
       <div>
         <p class="eyebrow rv">Quem te conduz</p>
         <h2 class="rv">Mafalda <em>Almeida.</em></h2>
@@ -347,27 +414,51 @@ p + p{margin-top:16px}
 
   <!-- 4 · INSCRIÇÃO + FECHO -->
   <section class="sec sec--escura" id="inscricao">
-    <div class="wrap split inscricao">
-      <div>
-        <p class="eyebrow rv">Inscrição · 27 e 28 de fevereiro de 2027</p>
-        <h2 class="rv">O teu próximo patamar começa <em>em fevereiro.</em></h2>
-        <!-- PENDENTE: texto proposto, validar com a Mafalda -->
-        <p class="carta rv">Ao longo dos anos acompanhei mulheres com tudo para crescer que continuavam a viver abaixo do que valem, e quase nunca era falta de competência. Nestes dois dias quero que vejas em ti o que eu já vejo, e que saias de lá com coragem para o assumir.</p>
-        <p class="assinatura rv">Mafalda</p>
-      </div>
-      <div class="bilhete rv" style="--i:1">
-        <div class="bilhete__topo">
-          <p class="bilhete__tipo" data-dado="bilhete">Bilhete</p>
-          <p class="bilhete__preco" data-dado="preco">PENDENTE</p>
-          <ul class="inclui">
-            <li>Dois dias presenciais com a Mafalda Almeida</li>
-            <li>O Método LIV completo: Liberdade, Identidade e Valor</li>
-          </ul>
-          <a class="btn btn--grande" data-checkout href="#inscricao">Garantir o meu bilhete <span class="seta">→</span></a>
-          <p class="micro">IVA incluído · Lugares limitados.</p>
+    <div class="wrap">
+      <div class="split inscricao">
+        <div>
+          <p class="eyebrow rv">Inscrição · 27 e 28 de fevereiro de 2027</p>
+          <h2 class="rv">O teu próximo patamar começa <em>em fevereiro.</em></h2>
         </div>
-        <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
+        <div>
+          <!-- PENDENTE: texto proposto, validar com a Mafalda -->
+          <p class="carta rv">Ao longo dos anos acompanhei mulheres com tudo para crescer que continuavam a viver abaixo do que valem, e quase nunca era falta de competência. Nestes dois dias quero que vejas em ti o que eu já vejo, e que saias de lá com coragem para o assumir.</p>
+          <p class="assinatura rv">Mafalda</p>
+        </div>
       </div>
+
+      <!-- Bilhetes: preços iguais aos do Stripe (IVA incluído). O duplo fica em destaque. -->
+      <div class="bilhetes">
+        <div class="bilhete rv">
+          <div class="bilhete__topo">
+            <p class="bilhete__tipo">Bilhete individual</p>
+            <p class="bilhete__preco">49,97 €</p>
+            <p class="bilhete__nota">1 pessoa</p>
+            <ul class="inclui">
+              <li>Dois dias presenciais com a Mafalda Almeida</li>
+              <li>O Método LIV completo: Liberdade, Identidade e Valor</li>
+            </ul>
+            <a class="btn btn--grande" data-checkout="individual" href="#inscricao">Garantir o meu bilhete <span class="seta">→</span></a>
+          </div>
+          <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
+        </div>
+
+        <div class="bilhete bilhete--destaque rv" style="--i:1">
+          <p class="bilhete__faixa">Para ti e para quem vem contigo</p>
+          <div class="bilhete__topo">
+            <p class="bilhete__tipo">Bilhete duplo</p>
+            <p class="bilhete__preco">89,97 €</p>
+            <p class="bilhete__nota">2 pessoas · 44,99 € por pessoa · poupas 9,97 €</p>
+            <ul class="inclui">
+              <li>Dois dias presenciais com a Mafalda Almeida, para duas pessoas</li>
+              <li>O Método LIV completo: Liberdade, Identidade e Valor</li>
+            </ul>
+            <a class="btn btn--grande" data-checkout="duplo" href="#inscricao">Garantir o bilhete duplo <span class="seta">→</span></a>
+          </div>
+          <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
+        </div>
+      </div>
+      <p class="bilhetes__micro rv">IVA incluído · Pagamento com MB WAY, cartão ou Klarna · Lugares limitados.</p>
     </div>
   </section>
 </main>
@@ -391,22 +482,23 @@ p + p{margin-top:16px}
 <script>
 /* ===== DADOS: tudo o que muda fica aqui ===== */
 const DADOS = {
-  inscricao: 'https://buy.stripe.com/dRm5kF0KScGn3F406x0Ny00', // Stripe Payment Link
-  bilhete: 'Bilhete Método LIV',
-  preco: '49,97 €',        // igual ao Stripe (IVA incluído)
-  local: ''                 // local do evento (vazio = não mostra)
+  // Stripe Payment Links (preços no HTML do bilhete: individual 49,97 €, duplo 89,97 €)
+  checkout: {
+    individual: 'https://buy.stripe.com/dRm5kF0KScGn3F406x0Ny00',
+    duplo:      'https://buy.stripe.com/5kQeVf3X46hZ6Rg8D30Ny01'
+  },
 };
 
 document.documentElement.classList.add('js');
 document.getElementById('ano').textContent = new Date().getFullYear();
 
 /* Preenche os dados no bilhete e no hero */
-document.querySelectorAll('[data-dado]').forEach(el => { const v = DADOS[el.dataset.dado]; if (v) el.textContent = v; });
 
 /* Funil de botões: todos os "Quero o meu lugar" descem até ao bilhete (onde se vê o preço);
    só o botão do bilhete abre o pagamento */
-if (DADOS.inscricao) document.querySelectorAll('[data-checkout]').forEach(a => {
-  a.href = DADOS.inscricao; a.target = '_blank'; a.rel = 'noopener';
+document.querySelectorAll('[data-checkout]').forEach(a => {
+  const url = DADOS.checkout[a.dataset.checkout]; if (!url) return;
+  a.href = url; a.target = '_blank'; a.rel = 'noopener';
 });
 
 /* Header: ganha fundo depois do hero começar a sair */
@@ -420,6 +512,24 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
 }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* Profundidade nas fotos: deslocamento proporcional à distância ao centro do ecrã (só com rAF, sem bibliotecas) */
+const camadas = [...document.querySelectorAll('[data-parallax]')];
+if (camadas.length && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  let pedido = false;
+  const mover = () => {
+    const meio = innerHeight / 2;
+    camadas.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > innerHeight + 200) return;
+      const d = (r.top + r.height / 2 - meio) * parseFloat(el.dataset.parallax);
+      el.style.translate = `0 ${(-d).toFixed(1)}px`;
+    });
+    pedido = false;
+  };
+  addEventListener('scroll', () => { if (!pedido){ pedido = true; requestAnimationFrame(mover); } }, {passive:true});
+  mover();
+}
 
 /* CTA fixo mobile: aparece depois do hero, some na inscrição e no rodapé */
 const cta = document.getElementById('ctaFixo');
