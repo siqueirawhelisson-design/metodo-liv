@@ -178,9 +178,11 @@ p + p{margin-top:16px}
 
 /* faixa com foto a toda a largura: véu vinho mais forte do lado do texto (gradiente linear, sem glow) */
 .faixa-foto{position:relative;overflow:hidden;isolation:isolate;background:var(--vinho);color:rgba(249,245,236,.85);padding:clamp(96px,12vw,160px) 0}
-.faixa-foto__img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover;object-position:50% 55%;z-index:-2}
+/* foto encostada à direita (68% da largura) para a Mafalda ficar ao lado do texto e não por baixo dele */
+.faixa-foto__img{position:absolute;left:auto;right:0;top:-10%;width:68%;height:120%;object-fit:cover;object-position:50% 50%;z-index:-2}
+@media (max-width:860px){.faixa-foto__img{width:100%}}
 .faixa-foto::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(90deg,rgba(42,4,13,.94) 0%,rgba(42,4,13,.86) 38%,rgba(42,4,13,.45) 70%,rgba(42,4,13,.25) 100%)}
+  background:linear-gradient(90deg,rgb(42,4,13) 0%,rgb(42,4,13) 32%,rgba(42,4,13,.55) 50%,rgba(42,4,13,.15) 72%,rgba(42,4,13,.1) 100%)}
 .faixa-foto__conteudo{max-width:560px}
 .faixa-foto .eyebrow{color:var(--dourado-claro)}
 .faixa-foto h2{color:var(--marfim)}
@@ -420,7 +422,7 @@ p + p{margin-top:16px}
 
   <!-- 2b · O QUE LEVAS: foto do corredor a toda a largura, com véu vinho e texto por cima -->
   <section class="faixa-foto" id="levas">
-    <img class="faixa-foto__img" data-parallax="0.12" src="assets/img/mafalda-corredor.webp" alt="" width="1400" height="933" loading="lazy">
+    <img class="faixa-foto__img" data-parallax="0.12" src="assets/img/mafalda-corredor.webp" alt="" width="1448" height="1086" loading="lazy">
     <div class="wrap">
       <div class="faixa-foto__conteudo">
         <p class="eyebrow rv">Dois dias com a Mafalda</p>
