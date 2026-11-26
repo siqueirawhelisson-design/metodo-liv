@@ -308,7 +308,7 @@ p + p{margin-top:16px}
         <div class="data"><strong>27 e 28 de fevereiro</strong><span>de 2027</span></div>
         <a class="btn btn--grande" href="#inscricao">Quero o meu lugar <span class="seta">→</span></a>
       </div>
-      <p class="micro rv" style="--i:4" data-local>Evento presencial · Local a anunciar</p>
+      <p class="micro rv" style="--i:4" data-local>Evento presencial · Lugares limitados</p>
     </div>
   </section>
 
@@ -387,10 +387,9 @@ p + p{margin-top:16px}
           <ul class="inclui">
             <li>Dois dias presenciais com a Mafalda Almeida</li>
             <li>O Método LIV completo: Liberdade, Identidade e Valor</li>
-            <li data-dado="local">Local a anunciar</li>
           </ul>
           <a class="btn btn--grande" data-checkout href="#inscricao">Garantir o meu bilhete <span class="seta">→</span></a>
-          <p class="micro">Lugares limitados.</p>
+          <p class="micro">IVA incluído · Lugares limitados.</p>
         </div>
         <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
       </div>
@@ -418,10 +417,10 @@ p + p{margin-top:16px}
 <script>
 /* ===== DADOS: tudo o que muda fica aqui ===== */
 const DADOS = {
-  inscricao: '',            // PENDENTE: link de pagamento/inscrição (o mesmo do QR code do banner)
-  bilhete: 'Bilhete',       // PENDENTE: nome da modalidade
-  preco: 'PENDENTE',        // ex.: '197 €'
-  local: 'Local a anunciar' // PENDENTE: local do evento
+  inscricao: 'https://buy.stripe.com/dRm5kF0KScGn3F406x0Ny00', // Stripe Payment Link
+  bilhete: 'Bilhete Método LIV',
+  preco: '49,97 €',        // igual ao Stripe (IVA incluído)
+  local: ''                 // local do evento (vazio = não mostra)
 };
 
 document.documentElement.classList.add('js');
@@ -429,7 +428,7 @@ document.getElementById('ano').textContent = new Date().getFullYear();
 
 /* Preenche os dados no bilhete e no hero */
 document.querySelectorAll('[data-dado]').forEach(el => { const v = DADOS[el.dataset.dado]; if (v) el.textContent = v; });
-document.querySelector('[data-local]').textContent = 'Evento presencial · ' + DADOS.local;
+document.querySelector('[data-local]').textContent = DADOS.local ? 'Evento presencial · ' + DADOS.local : 'Evento presencial · Lugares limitados';
 
 /* Funil de botões: todos os "Quero o meu lugar" descem até ao bilhete (onde se vê o preço);
    só o botão do bilhete abre o pagamento */
