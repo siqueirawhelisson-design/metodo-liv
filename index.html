@@ -160,11 +160,14 @@ p + p{margin-top:16px}
 .nota{margin-top:28px;font-size:.86rem;color:var(--texto-suave)}
 @media (max-width:860px){.pilares{grid-template-columns:1fr}}
 
-.levas{margin-top:clamp(72px,9vw,120px);grid-template-columns:1.1fr .9fr;align-items:center}
+.levas{margin-top:clamp(72px,9vw,120px);grid-template-columns:.8fr 1.2fr}
+.levas__foto{border-radius:8px;overflow:hidden;aspect-ratio:4/5}
+.levas__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .lista{list-style:none;border-top:1px solid var(--linha);counter-reset:n;margin-top:30px}
 .lista li{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--linha);counter-increment:n}
 .lista li::before{content:counter(n,decimal-leading-zero);font:italic 400 1.35rem/1.3 var(--f-titulo);color:var(--dourado)}
-@media (max-width:1000px){.levas{grid-template-columns:1fr}}
+.levas .btn{margin-top:36px}
+@media (max-width:1000px){.levas{grid-template-columns:1fr}.levas__foto{aspect-ratio:4/3;max-height:520px}}
 
 /* ---------- Mentora ---------- */
 .mentora{grid-template-columns:.85fr 1.15fr;align-items:start}
@@ -185,19 +188,22 @@ p + p{margin-top:16px}
 @media (max-width:1000px){.mentora{grid-template-columns:1fr}.mentora .arco{max-width:460px}}
 @media (max-width:560px){.testemunhos{grid-template-columns:1fr}.factos div{padding:0 16px}}
 
-/* ---------- Bilhete (cartão vinho sobre o marfim, para ser o ponto focal da secção) ---------- */
-.bilhete{background:var(--vinho);color:rgba(249,245,236,.82);border-radius:18px;overflow:hidden}
+/* ---------- Inscrições + fecho ---------- */
+.inscricao{grid-template-columns:1.05fr .95fr}
+.carta{margin-top:26px;max-width:46ch}
+.assinatura{margin-top:18px;font:italic 400 1.6rem/1 var(--f-titulo);color:var(--dourado-claro)}
+.bilhete{background:var(--marfim);color:var(--texto);border-radius:18px;overflow:hidden}
 .bilhete__topo{padding:clamp(28px,4vw,40px)}
-.bilhete__tipo{font:600 .74rem/1.6 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;color:var(--dourado-claro)}
-.bilhete__preco{margin-top:10px;font:400 clamp(2.6rem,5vw,3.6rem)/1 var(--f-titulo);color:var(--marfim)}
-.inclui{list-style:none;margin-top:24px;border-top:1px solid var(--linha-escura)}
-.inclui li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--linha-escura);font-size:.95rem}
-.inclui li::before{content:"";flex:none;width:10px;height:6px;margin-top:.55em;border-left:1.5px solid var(--dourado);border-bottom:1.5px solid var(--dourado);transform:rotate(-45deg)}
-.bilhete .btn{width:100%;margin-top:28px;background:var(--dourado);border-color:var(--dourado);color:var(--vinho)}
-.bilhete .btn::before{background:var(--marfim)}
-.bilhete .micro{color:rgba(249,245,236,.6)}
-.bilhete__talao{display:flex;justify-content:space-between;gap:12px;padding:16px clamp(28px,4vw,40px);border-top:1.5px dashed rgba(249,245,236,.25);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(249,245,236,.6)}
-.mentora__fecho{margin-top:44px}
+.bilhete__tipo{font:600 .74rem/1.6 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;color:var(--marsala)}
+.bilhete__preco{margin-top:10px;font:400 clamp(2.6rem,5vw,3.6rem)/1 var(--f-titulo);color:var(--vinho)}
+.bilhete__preco small{font:400 .9rem var(--f-corpo);color:var(--texto-suave)}
+.inclui{list-style:none;margin-top:24px;border-top:1px solid var(--linha)}
+.inclui li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--linha);font-size:.95rem}
+.inclui li::before{content:"";flex:none;width:10px;height:6px;margin-top:.55em;border-left:1.5px solid var(--marsala);border-bottom:1.5px solid var(--marsala);transform:rotate(-45deg)}
+.bilhete .btn{width:100%;margin-top:28px;background:var(--vinho);border-color:var(--vinho);color:var(--marfim)}
+.bilhete .btn::before{background:var(--marsala)}
+.bilhete__talao{display:flex;justify-content:space-between;gap:12px;padding:16px clamp(28px,4vw,40px);border-top:1.5px dashed rgba(58,7,18,.25);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--texto-suave)}
+@media (max-width:1000px){.inscricao{grid-template-columns:1fr}}
 
 /* ---------- Rodapé ---------- */
 .rodape{background:#2A040D;color:rgba(249,245,236,.6);padding:56px 0 32px;font-size:.86rem}
@@ -297,8 +303,8 @@ p + p{margin-top:16px}
         <li class="rv" style="--i:2"><b>V</b><h3>Valor</h3><p>Reconheces o teu valor e passas a vê-lo refletido no que cobras, no que aceitas e na prosperidade que deixas entrar.</p></li>
       </ol>
 
-      <!-- resultado + bilhete lado a lado: a oferta aparece logo depois do método -->
-      <div class="split levas" id="inscricao">
+      <div class="split levas">
+        <div class="levas__foto rv"><img src="assets/img/mafalda-palco.webp" alt="Mafalda Almeida a falar para um grupo de participantes" width="1000" height="1501" loading="lazy"></div>
         <div>
           <h3 class="rv">O que levas destes dois dias</h3>
           <ol class="lista">
@@ -306,20 +312,7 @@ p + p{margin-top:16px}
             <li class="rv" style="--i:1"><p>Uma relação nova com o teu valor e com o dinheiro que deixas entrar na tua vida.</p></li>
             <li class="rv" style="--i:2"><p>Clareza e coragem para as próximas decisões, na vida e nos negócios.</p></li>
           </ol>
-        </div>
-        <div class="bilhete rv" style="--i:1">
-          <div class="bilhete__topo">
-            <p class="bilhete__tipo" data-dado="bilhete">Bilhete</p>
-            <p class="bilhete__preco" data-dado="preco">PENDENTE</p>
-            <ul class="inclui">
-              <li>Dois dias presenciais com a Mafalda Almeida</li>
-              <li>O Método LIV completo: Liberdade, Identidade e Valor</li>
-              <li data-dado="local">Local a anunciar</li>
-            </ul>
-            <a class="btn" data-cta href="#inscricao">Quero o meu lugar <span class="seta">→</span></a>
-            <p class="micro">Lugares limitados.</p>
-          </div>
-          <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
+          <a class="btn rv" data-cta href="#inscricao">Quero viver o Método LIV <span class="seta">→</span></a>
         </div>
       </div>
     </div>
@@ -347,10 +340,33 @@ p + p{margin-top:16px}
           <blockquote class="rv"><p>«A Mafalda despertou-me para o melhor de mim.»</p><cite>Filipa Queimado, Diretora de Recursos Humanos</cite></blockquote>
           <blockquote class="rv" style="--i:1"><p>«Senti que podia ser ambiciosa.»</p><cite>Filipa Carvalho, Direção Logística</cite></blockquote>
         </div>
-        <div class="mentora__fecho rv">
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · INSCRIÇÃO + FECHO -->
+  <section class="sec sec--escura" id="inscricao">
+    <div class="wrap split inscricao">
+      <div>
+        <p class="eyebrow rv">Inscrição · 27 e 28 de fevereiro de 2027</p>
+        <h2 class="rv">O teu próximo patamar começa <em>em fevereiro.</em></h2>
+        <!-- PENDENTE: texto proposto, validar com a Mafalda -->
+        <p class="carta rv">Ao longo dos anos acompanhei mulheres com tudo para crescer que continuavam a viver abaixo do que valem, e quase nunca era falta de competência. Nestes dois dias quero que vejas em ti o que eu já vejo, e que saias de lá com coragem para o assumir.</p>
+        <p class="assinatura rv">Mafalda</p>
+      </div>
+      <div class="bilhete rv" style="--i:1">
+        <div class="bilhete__topo">
+          <p class="bilhete__tipo" data-dado="bilhete">Bilhete</p>
+          <p class="bilhete__preco" data-dado="preco">PENDENTE</p>
+          <ul class="inclui">
+            <li>Dois dias presenciais com a Mafalda Almeida</li>
+            <li>O Método LIV completo: Liberdade, Identidade e Valor</li>
+            <li data-dado="local">Local a anunciar</li>
+          </ul>
           <a class="btn" data-cta href="#inscricao">Quero o meu lugar <span class="seta">→</span></a>
-          <p class="micro">27 e 28 de fevereiro de 2027 · Lugares limitados.</p>
+          <p class="micro">Lugares limitados.</p>
         </div>
+        <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
       </div>
     </div>
   </section>
@@ -403,7 +419,7 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-/* CTA fixo mobile: aparece depois do hero, some no bilhete e no rodapé */
+/* CTA fixo mobile: aparece depois do hero, some na inscrição e no rodapé */
 const cta = document.getElementById('ctaFixo');
 let passouHero = false, noFim = false;
 const upd = () => cta.classList.toggle('on', passouHero && !noFim);
