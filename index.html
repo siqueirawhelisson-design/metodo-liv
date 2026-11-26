@@ -218,7 +218,25 @@ p + p{margin-top:16px}
 .bilhete.bilhete--destaque .btn{background:var(--dourado);border-color:var(--dourado);color:var(--vinho)}
 .bilhete.bilhete--destaque .btn::before{background:var(--vinho)}
 .bilhete.bilhete--destaque .btn:hover{color:var(--marfim)}
+.duvidas{margin:14px auto 0;text-align:center;font-size:.9rem;color:rgba(249,245,236,.75);max-width:none}
+.duvidas a{color:var(--dourado-claro);text-decoration:none;border-bottom:1px solid rgba(232,194,122,.45);padding-bottom:1px;transition:border-color .3s}
+.duvidas a:hover{border-color:var(--dourado-claro)}
+.rodape__wa{margin-top:18px;font-size:.84rem;letter-spacing:.04em;color:rgba(249,245,236,.7)!important;border-bottom:1px solid transparent;transition:border-color .3s,color .3s}
+.rodape__wa:hover{color:var(--dourado-claro)!important;border-color:currentColor}
 .bilhetes__micro{margin:26px auto 0;text-align:center;font-size:.86rem;color:rgba(249,245,236,.62);max-width:none}
+/* bilhetes mais compactos e finos: largura contida, preço menor, botão normal */
+.bilhetes{max-width:860px;margin-inline:auto}
+.bilhete{border-radius:14px}
+.bilhete__topo{padding:clamp(24px,2.6vw,34px)}
+.bilhete__tipo{font-size:.68rem;letter-spacing:.26em}
+.bilhete__preco{margin-top:12px;font-size:clamp(2.1rem,3.2vw,2.7rem)}
+.bilhete__nota{font-size:.8rem}
+.inclui{margin-top:20px;margin-bottom:24px}
+.inclui li{padding:10px 0;font-size:.88rem}
+.bilhete .btn{min-height:50px;padding:16px 24px;font-size:12.5px;letter-spacing:.14em;margin-top:auto}
+.bilhete__talao{padding:12px clamp(24px,2.6vw,34px);font-size:.68rem;letter-spacing:.16em}
+.bilhete__faixa{padding:8px 14px;font-size:.64rem;letter-spacing:.24em}
+.bilhetes__micro{font-size:.8rem}
 @media (max-width:860px){.bilhetes{grid-template-columns:1fr}.bilhete--destaque{order:-1}}
 .carta{margin-top:26px;max-width:46ch}
 .assinatura{margin-top:18px;font:italic 400 1.6rem/1 var(--f-titulo);color:var(--dourado-claro)}
@@ -263,9 +281,10 @@ p + p{margin-top:16px}
 /* entrada ao rolar: sobe e aparece, em cascata (--i) */
 .js .rv{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease-suave),transform 1.1s var(--ease-suave);transition-delay:calc(var(--i,0) * 90ms)}
 .js .rv.in{opacity:1;transform:none}
-/* fotos: abrem de baixo para cima como uma cortina, sem deslocar a página */
-.js .rv-foto{clip-path:inset(100% 0 0 0);transition:clip-path 1.3s var(--ease-suave)}
-.js .rv-foto.in{clip-path:inset(0 0 0 0)}
+/* fotos: entram com fade e um ligeiro zoom a assentar.
+   (Não usar clip-path no elemento observado: o IntersectionObserver vê-o como invisível e a foto nunca aparece.) */
+.js .rv-foto{transform:translateY(32px) scale(.97)}
+.js .rv-foto.in{transform:none}
 /* filete dos eyebrows desenha-se da esquerda */
 .js .eyebrow.rv::before{transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease-suave) .25s}
 .js .eyebrow.rv.in::before{transform:scaleX(1)}
@@ -310,7 +329,7 @@ p + p{margin-top:16px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .js .rv{opacity:1;transform:none}
-  .js .rv-foto{clip-path:none}
+  .js .rv-foto{transform:none}
   .js .pilares li.rv::before,.js .eyebrow.rv::before{transform:none}
   [data-parallax]{translate:none!important}
 }
@@ -438,7 +457,7 @@ p + p{margin-top:16px}
               <li>Dois dias presenciais com a Mafalda Almeida</li>
               <li>O Método LIV completo: Liberdade, Identidade e Valor</li>
             </ul>
-            <a class="btn btn--grande" data-checkout="individual" href="#inscricao">Garantir o meu bilhete <span class="seta">→</span></a>
+            <a class="btn" data-checkout="individual" href="#inscricao">Garantir o meu bilhete <span class="seta">→</span></a>
           </div>
           <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
         </div>
@@ -453,12 +472,13 @@ p + p{margin-top:16px}
               <li>Dois dias presenciais com a Mafalda Almeida, para duas pessoas</li>
               <li>O Método LIV completo: Liberdade, Identidade e Valor</li>
             </ul>
-            <a class="btn btn--grande" data-checkout="duplo" href="#inscricao">Garantir o bilhete duplo <span class="seta">→</span></a>
+            <a class="btn" data-checkout="duplo" href="#inscricao">Garantir o bilhete duplo <span class="seta">→</span></a>
           </div>
           <div class="bilhete__talao"><span>Método LIV</span><span>27 · 28 fev 2027</span></div>
         </div>
       </div>
       <p class="bilhetes__micro rv">IVA incluído · Pagamento com MB WAY, cartão ou Klarna · Lugares limitados.</p>
+      <p class="duvidas rv">Tens alguma dúvida? Fala connosco no <a href="https://wa.me/351935549884?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20M%C3%A9todo%20LIV." target="_blank" rel="noopener">WhatsApp: +351 935 549 884</a></p>
     </div>
   </section>
 </main>
@@ -469,6 +489,7 @@ p + p{margin-top:16px}
       <img class="logo" src="assets/img/logo-liv.webp" width="599" height="288" alt="Método LIV: Liberdade, Identidade e Valor">
       <p class="rodape__data">27 e 28 de fevereiro de 2027</p>
       <a class="btn" href="#inscricao">Quero o meu lugar <span class="seta">→</span></a>
+      <a class="rodape__wa" href="https://wa.me/351935549884?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20M%C3%A9todo%20LIV." target="_blank" rel="noopener">Dúvidas? WhatsApp +351 935 549 884</a>
     </div>
     <div class="rodape__base">
       <span>© <span id="ano"></span> Mafalda Almeida</span>
