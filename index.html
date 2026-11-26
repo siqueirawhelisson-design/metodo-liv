@@ -108,18 +108,18 @@ p + p{margin-top:16px}
 .micro::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--dourado)}
 
 /* ---------- Header fixo ---------- */
-/* a barra só existe depois do hero: no topo a página começa limpa (o hero já tem logo e botão) */
-.topo{position:fixed;inset:0 0 auto;z-index:50;transform:translateY(-105%);transition:transform .45s var(--ease),background .35s,box-shadow .35s}
-.topo.rolado{transform:none}
-.topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
-.topo__logo{display:block;width:118px;transform-origin:left center;transition:transform .35s var(--ease),opacity .35s}
+/* barra fina sempre visível: transparente sobre o hero, vinho sólido depois do scroll (padrão das referências) */
+.topo{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,box-shadow .35s}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:12px}
+.topo__logo{display:block;width:88px;transform-origin:left center;transition:transform .35s var(--ease),opacity .35s}
 .topo__nav{display:flex;gap:32px;list-style:none}
-.topo__nav a{font-size:.82rem;letter-spacing:.08em;text-decoration:none;color:var(--marfim);opacity:.85}
+.topo__nav a{font-size:.76rem;letter-spacing:.1em;text-decoration:none;color:var(--marfim);opacity:.85}
 .topo__nav a:hover{opacity:1}
-.topo .btn{padding:12px 22px;font-size:12px;background:var(--dourado);border-color:var(--dourado);color:var(--vinho)}
+/* barra fina (~64px): botão compacto, sem herdar o tamanho grande dos botões da página */
+.topo .btn{min-height:0;padding:11px 20px;font-size:11.5px;letter-spacing:.12em;background:var(--dourado);border-color:var(--dourado);color:var(--vinho)}
 .topo .btn::before{background:var(--marfim)}
 .topo.rolado{background:rgba(58,7,18,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--linha-escura)}
-.topo.rolado .topo__logo{transform:scale(.82)}
+.topo.rolado .topo__logo{transform:scale(.9)}
 @media (max-width:960px){.topo__nav{display:none}}
 
 /* ---------- Hero (baseado no banner horizontal do evento) ----------
