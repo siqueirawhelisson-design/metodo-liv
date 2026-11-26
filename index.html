@@ -159,12 +159,17 @@ p + p{margin-top:16px}
 .hero .btn{width:100%;max-width:400px}
 @media (max-width:900px){
   .hero{display:block;min-height:0}
-  .hero__visual{position:relative;width:100%;aspect-ratio:1/.95;max-height:72vh}
+  /* telemóvel: foto mais baixa para a data e o botão caberem no 1.º ecrã; a Mafalda funde-se no marsala
+     (máscara na base) em vez de acabar num corte seco, e o logo sobe um pouco por cima da foto */
+  .hero__visual{position:relative;width:100%;height:min(52vh,430px)}
   .hero__sala{width:100%;opacity:.55}
-  .hero__visual::after{background:linear-gradient(180deg,rgba(101,20,43,.4) 0%,transparent 25%,transparent 65%,var(--fundo-hero) 100%)}
-  .hero__mafalda{left:50%;translate:-50% 0;height:92%;max-width:none;object-position:center bottom}
-  .hero__conteudo{width:100%;padding:8px var(--pad) 56px}
-  .hero .logo{width:280px;max-width:80vw}
+  .hero__visual::after{background:linear-gradient(180deg,rgba(101,20,43,.45) 0%,transparent 22%,transparent 55%,var(--fundo-hero) 100%)}
+  .hero__mafalda{left:50%;translate:-50% 0;height:94%;max-width:none;object-position:center bottom;
+    -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,#000 70%,transparent 100%)}
+  .hero__conteudo{position:relative;width:100%;margin-top:-56px;padding:0 var(--pad) 44px}
+  .hero .logo{width:210px;min-width:0;max-width:62vw}
+  .hero .promessa{margin-top:18px;font-size:clamp(1.3rem,5.6vw,1.6rem)}
+  .hero__acao{margin-top:22px;gap:14px}
 }
 
 /* ---------- Método ---------- */
