@@ -133,14 +133,17 @@ p + p{margin-top:16px}
 /* ---------- Hero (baseado no banner horizontal do evento) ----------
    Esquerda: sala do evento em transparência + Mafalda recortada à frente, assente na base.
    Direita: logo, promessa, data e botão, centrados na coluna. */
-/* fundo do hero = cor de fundo da imagem composta (#4D0016, medida), para a foto não ter costura */
-.hero{--fundo-hero:#4D0016;position:relative;min-height:min(100svh,940px);display:flex;align-items:center;background:var(--fundo-hero);color:var(--marfim);overflow:hidden;isolation:isolate}
-.hero__visual{position:absolute;inset:0 auto 0 0;width:62%;z-index:-1;overflow:hidden}
-.hero__img{position:absolute;bottom:0;left:-4%;height:86%;width:auto;max-width:none}
-/* transição da imagem para o fundo: à direita (sob o texto) e no topo (gradientes lineares, sem glow) */
+/* hero (referência aprovada): sala do evento grande e transparente ao fundo, Mafalda recortada à frente,
+   textos à direita. Fundo marsala medido na referência (#65142B), com uma descida linear subtil para o mais escuro. */
+.hero{--fundo-hero:#65142B;position:relative;min-height:min(100svh,940px);display:flex;align-items:center;
+  background:linear-gradient(165deg,#74203A 0%,#65142B 55%,#570E24 100%);color:var(--marfim);overflow:hidden;isolation:isolate}
+.hero__visual{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.hero__sala{position:absolute;left:0;top:0;width:82%;height:100%;object-fit:cover;object-position:50% 45%;opacity:.85}
+/* a sala dissolve-se no marsala à direita (sob o texto), em cima e em baixo: gradientes lineares, sem glow */
 .hero__visual::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent 72%,var(--fundo-hero) 100%),
-             linear-gradient(180deg,var(--fundo-hero) 12%,transparent 28%)}
+  background:linear-gradient(90deg,rgba(150,52,72,.38) 0%,rgba(140,45,68,.42) 40%,rgba(101,20,43,.9) 68%,var(--fundo-hero) 82%),
+             linear-gradient(180deg,rgba(101,20,43,.6) 0%,transparent 24%,transparent 74%,rgba(87,14,36,.55) 100%)}
+.hero__mafalda{position:absolute;z-index:1;bottom:0;left:clamp(0px,3vw,48px);height:calc(100% - clamp(70px,10vh,100px));width:auto;max-width:42vw;object-fit:contain;object-position:left bottom}
 /* tamanhos limitados também pela ALTURA do ecrã (vh): em qualquer portátil a data e o botão ficam visíveis sem scroll */
 .hero__conteudo{width:46%;margin-left:auto;padding:clamp(40px,7vh,72px) var(--pad) clamp(32px,6vh,64px) clamp(16px,2vw,32px);text-align:center}
 .hero .logo{width:min(26vw,40vh,380px);min-width:240px;margin:0 auto}
@@ -156,9 +159,10 @@ p + p{margin-top:16px}
 .hero .btn{width:100%;max-width:400px}
 @media (max-width:900px){
   .hero{display:block;min-height:0}
-  .hero__visual{position:relative;width:100%;aspect-ratio:3/2}
-  .hero__img{left:0;width:100%;height:100%;object-fit:cover}
-  .hero__visual::after{background:linear-gradient(180deg,transparent 70%,var(--fundo-hero) 100%)}
+  .hero__visual{position:relative;width:100%;aspect-ratio:1/.95;max-height:72vh}
+  .hero__sala{width:100%;opacity:.55}
+  .hero__visual::after{background:linear-gradient(180deg,rgba(101,20,43,.4) 0%,transparent 25%,transparent 65%,var(--fundo-hero) 100%)}
+  .hero__mafalda{left:50%;translate:-50% 0;height:92%;max-width:none;object-position:center bottom}
   .hero__conteudo{width:100%;padding:8px var(--pad) 56px}
   .hero .logo{width:280px;max-width:80vw}
 }
@@ -318,8 +322,10 @@ p + p{margin-top:16px}
 .js .pilares li.rv.in::before{transform:scaleX(1)}
 
 /* hero: a foto entra devagar (ligeiro zoom a assentar), o resto em cascata */
-.js .hero__img{animation:fotoEntra 1.8s var(--ease-suave) both}
-@keyframes fotoEntra{from{opacity:0;scale:1.06}to{opacity:1;scale:1}}
+.js .hero__sala{animation:salaEntra 2.2s var(--ease-suave) both}
+.js .hero__mafalda{animation:mafaldaEntra 1.4s var(--ease-suave) .2s both}
+@keyframes salaEntra{from{opacity:0;scale:1.08}to{opacity:.85;scale:1}}
+@keyframes mafaldaEntra{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
 /* profundidade: as fotos andam um pouco mais devagar que a página (translate controlado no JS) */
 [data-parallax]{will-change:translate}
@@ -376,10 +382,8 @@ p + p{margin-top:16px}
   <!-- 1 · HERO -->
   <section class="hero">
     <div class="hero__visual">
-      <picture>
-        <source media="(max-width:900px)" srcset="assets/img/hero-mafalda-m.webp">
-        <img class="hero__img" src="assets/img/hero-mafalda.webp" alt="Mafalda Almeida a palestrar, com a sala de um dos seus eventos ao fundo" width="1536" height="1024" fetchpriority="high">
-      </picture>
+      <img class="hero__sala" src="assets/img/sala-fundo.webp" alt="" width="1800" height="1200">
+      <img class="hero__mafalda" src="assets/img/mafalda-hero.webp" alt="Mafalda Almeida de braços abertos, a dar as boas-vindas" width="1021" height="1298" fetchpriority="high">
     </div>
     <div class="hero__conteudo">
       <h1 class="rv">
