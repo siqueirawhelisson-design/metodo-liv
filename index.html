@@ -120,35 +120,43 @@ p + p{margin-top:16px}
 /* o logo do topo só aparece depois do hero (no hero já está o logo grande) */
 .topo:not(.rolado) .topo__logo{opacity:0;pointer-events:none}
 
-/* ---------- Hero (baseado no banner vertical do evento) ---------- */
-.hero{position:relative;min-height:min(100svh,980px);display:flex;align-items:flex-end;background:var(--vinho);color:var(--marfim);overflow:hidden;isolation:isolate}
-.hero__foto{position:absolute;inset:0 0 auto;height:78%;z-index:-2}
-/* enquadramento: o rosto da Mafalda fica acima do logo, que assenta sobre o corpo (como no banner) */
-.hero__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 72%}
-@media (min-width:701px){.hero__foto{height:72%}}
-/* véu: a foto desce até ao vinho, como no banner (gradiente linear de transição, sem glow) */
-.hero__foto::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(58,7,18,.35) 0%,rgba(58,7,18,.25) 30%,rgba(58,7,18,.82) 72%,var(--vinho) 100%)}
-/* padding-top é só o mínimo: o conteúdo assenta na base do ecrã para a data e o botão ficarem visíveis sem scroll */
-.hero__conteudo{width:100%;max-width:820px;margin:0 auto;padding:26vh var(--pad) clamp(40px,6vh,72px);text-align:center}
-.hero .logo{max-width:clamp(260px,26vw,360px);margin:0 auto}
-.hero .logo__lema{margin-top:10px}
-.promessa{margin:clamp(28px,4vh,40px) auto 0;font:400 clamp(1.55rem,3.1vw,2.5rem)/1.2 var(--f-titulo);color:var(--marfim);max-width:22ch;text-wrap:balance}
+/* ---------- Hero (baseado no banner horizontal do evento) ----------
+   Esquerda: sala do evento em transparência + Mafalda recortada à frente, assente na base.
+   Direita: logo, promessa, data e botão, centrados na coluna. */
+.hero{position:relative;min-height:min(100svh,940px);display:flex;align-items:center;background:var(--vinho);color:var(--marfim);overflow:hidden;isolation:isolate}
+.hero__visual{position:absolute;inset:0 auto 0 0;width:58%;z-index:-1}
+.hero__sala{position:absolute;inset:0 0 auto;height:72%}
+.hero__sala img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+/* véu: a sala fica "transparente" e funde-se com o vinho à direita e em baixo (gradientes lineares de transição, sem glow) */
+.hero__sala::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(58,7,18,.45) 0%,rgba(58,7,18,.55) 55%,var(--vinho) 100%),
+             linear-gradient(180deg,rgba(58,7,18,.2) 0%,rgba(58,7,18,.35) 50%,var(--vinho) 100%)}
+/* a foto original acaba na anca: a base funde-se no vinho para não haver corte seco */
+.hero__mafalda{position:absolute;left:clamp(0px,2vw,32px);bottom:0;width:88%;height:auto;max-width:none;
+  -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 78%,transparent 100%)}
+.hero__conteudo{width:46%;margin-left:auto;padding:120px var(--pad) 64px clamp(16px,2vw,32px);text-align:center}
+.hero .logo{max-width:clamp(240px,24vw,360px);margin:0 auto}
+.hero .logo__lema{margin-top:8px}
+/* promessa entre dois filetes de 1px, como no banner */
+.promessa{margin:clamp(22px,3vh,32px) auto 0;padding:clamp(18px,2.4vh,26px) 0;border-block:1px solid rgba(217,164,64,.55);
+  font:400 clamp(1.5rem,2.6vw,2.4rem)/1.2 var(--f-titulo);color:var(--marfim);text-wrap:balance}
 .promessa em{color:var(--dourado-claro)}
-.hero__sub{margin:18px auto 0;max-width:46ch;color:rgba(249,245,236,.78)}
-.hero__acao{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:16px;margin-top:clamp(28px,4vh,40px)}
-.data{display:flex;flex-direction:column;justify-content:center;padding:12px 28px;border:1px solid rgba(217,164,64,.7);border-radius:14px;line-height:1.15}
-.data strong{font:500 clamp(1.15rem,1.8vw,1.4rem)/1.15 var(--f-titulo);text-transform:uppercase;letter-spacing:.02em}
+.hero__sub{margin:20px auto 0;max-width:44ch;color:rgba(249,245,236,.78)}
+.hero__acao{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:clamp(24px,3.4vh,34px)}
+.data{display:flex;flex-direction:column;justify-content:center;width:100%;max-width:440px;padding:12px 28px;border:1px solid rgba(217,164,64,.7);border-radius:999px;line-height:1.15}
+.data strong{font:500 clamp(1.15rem,1.8vw,1.5rem)/1.15 var(--f-titulo);text-transform:uppercase;letter-spacing:.02em}
 .data span{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dourado-claro)}
-.data span::before,.data span::after{content:"";width:18px;height:1px;background:var(--dourado)}
-.hero .btn{padding-inline:36px}
+.data span::before,.data span::after{content:"";width:40px;height:1px;background:var(--dourado)}
+.hero .btn{width:100%;max-width:360px;padding-inline:36px}
 .hero .micro{justify-content:center;color:rgba(249,245,236,.62)}
-@media (max-width:700px){
-  .hero__foto{height:62%}
-  .hero__conteudo{padding-top:34vh}
+@media (max-width:900px){
+  .hero{display:block;min-height:0}
+  .hero__visual{position:relative;width:100%;aspect-ratio:1/.92;max-height:70vh}
+  .hero__sala{height:80%}
+  .hero__sala::after{background:linear-gradient(180deg,rgba(58,7,18,.35) 0%,rgba(58,7,18,.5) 50%,var(--vinho) 100%)}
+  .hero__mafalda{left:50%;transform:translateX(-50%);width:auto;height:88%}
+  .hero__conteudo{width:100%;padding:8px var(--pad) 56px}
   .hero .logo{max-width:250px}
-  .hero__acao{flex-direction:column;align-items:center}
-  .data,.hero .btn{width:100%;max-width:340px}
 }
 
 /* ---------- Método ---------- */
@@ -264,11 +272,9 @@ p + p{margin-top:16px}
 <main id="conteudo">
   <!-- 1 · HERO -->
   <section class="hero">
-    <div class="hero__foto">
-      <picture>
-        <source media="(max-width:700px)" srcset="assets/img/evento-sala-m.webp">
-        <img src="assets/img/evento-sala.webp" alt="Mafalda Almeida de braços abertos diante de uma sala cheia de mulheres num dos seus eventos" width="2000" height="1333" fetchpriority="high">
-      </picture>
+    <div class="hero__visual">
+      <div class="hero__sala"><img src="assets/img/evento-sala-m.webp" alt="" width="1000" height="666"></div>
+      <img class="hero__mafalda" src="assets/img/mafalda-recorte.webp" alt="Mafalda Almeida a palestrar" width="674" height="580" fetchpriority="high">
     </div>
     <div class="hero__conteudo">
       <h1 class="rv">
