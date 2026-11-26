@@ -123,17 +123,22 @@ p + p{margin-top:16px}
 /* ---------- Hero (baseado no banner horizontal do evento) ----------
    Esquerda: sala do evento em transparência + Mafalda recortada à frente, assente na base.
    Direita: logo, promessa, data e botão, centrados na coluna. */
-.hero{position:relative;min-height:min(100svh,940px);display:flex;align-items:center;background:var(--vinho);color:var(--marfim);overflow:hidden;isolation:isolate}
-.hero__visual{position:absolute;inset:0 auto 0 0;width:58%;z-index:-1}
-.hero__sala{position:absolute;inset:0 0 auto;height:72%}
-.hero__sala img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
-/* véu: a sala fica "transparente" e funde-se com o vinho à direita e em baixo (gradientes lineares de transição, sem glow) */
-.hero__sala::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(58,7,18,.45) 0%,rgba(58,7,18,.55) 55%,var(--vinho) 100%),
-             linear-gradient(180deg,rgba(58,7,18,.2) 0%,rgba(58,7,18,.35) 50%,var(--vinho) 100%)}
-/* a foto original acaba na anca: a base funde-se no vinho para não haver corte seco */
-.hero__mafalda{position:absolute;left:clamp(0px,2vw,32px);bottom:0;width:88%;height:auto;max-width:none;
-  -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 78%,transparent 100%)}
+/* fundo do hero = cor de fundo da imagem composta (#4D0016, medida), para a foto não ter costura */
+.hero{--fundo-hero:#4D0016;position:relative;min-height:min(100svh,940px);display:flex;align-items:center;background:var(--fundo-hero);color:var(--marfim);overflow:hidden;isolation:isolate}
+.hero__visual{position:absolute;inset:0 auto 0 0;width:62%;z-index:-1;overflow:hidden}
+/* portáteis com ecrã baixo: compactar para a data e o botão caberem sem scroll */
+@media (min-width:901px) and (max-height:820px){
+  .hero__conteudo{padding-top:92px;padding-bottom:36px}
+  .hero .logo{max-width:230px}
+  .promessa{margin-top:16px;padding-block:14px;font-size:clamp(1.4rem,2.3vw,2rem)}
+  .hero__sub{margin-top:14px;font-size:.95rem}
+  .hero__acao{margin-top:20px;gap:12px}
+}
+.hero__img{position:absolute;bottom:0;left:-4%;height:86%;width:auto;max-width:none}
+/* transição da imagem para o fundo: à direita (sob o texto) e no topo (gradientes lineares, sem glow) */
+.hero__visual::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 72%,var(--fundo-hero) 100%),
+             linear-gradient(180deg,var(--fundo-hero) 12%,transparent 28%)}
 .hero__conteudo{width:46%;margin-left:auto;padding:120px var(--pad) 64px clamp(16px,2vw,32px);text-align:center}
 .hero .logo{max-width:clamp(240px,24vw,360px);margin:0 auto}
 .hero .logo__lema{margin-top:8px}
@@ -151,10 +156,9 @@ p + p{margin-top:16px}
 .hero .micro{justify-content:center;color:rgba(249,245,236,.62)}
 @media (max-width:900px){
   .hero{display:block;min-height:0}
-  .hero__visual{position:relative;width:100%;aspect-ratio:1/.92;max-height:70vh}
-  .hero__sala{height:80%}
-  .hero__sala::after{background:linear-gradient(180deg,rgba(58,7,18,.35) 0%,rgba(58,7,18,.5) 50%,var(--vinho) 100%)}
-  .hero__mafalda{left:50%;transform:translateX(-50%);width:auto;height:88%}
+  .hero__visual{position:relative;width:100%;aspect-ratio:3/2}
+  .hero__img{left:0;width:100%;height:100%;object-fit:cover}
+  .hero__visual::after{background:linear-gradient(180deg,transparent 70%,var(--fundo-hero) 100%)}
   .hero__conteudo{width:100%;padding:8px var(--pad) 56px}
   .hero .logo{max-width:250px}
 }
@@ -273,8 +277,10 @@ p + p{margin-top:16px}
   <!-- 1 · HERO -->
   <section class="hero">
     <div class="hero__visual">
-      <div class="hero__sala"><img src="assets/img/evento-sala-m.webp" alt="" width="1000" height="666"></div>
-      <img class="hero__mafalda" src="assets/img/mafalda-recorte.webp" alt="Mafalda Almeida a palestrar" width="674" height="580" fetchpriority="high">
+      <picture>
+        <source media="(max-width:900px)" srcset="assets/img/hero-mafalda-m.webp">
+        <img class="hero__img" src="assets/img/hero-mafalda.webp" alt="Mafalda Almeida a palestrar, com a sala de um dos seus eventos ao fundo" width="1536" height="1024" fetchpriority="high">
+      </picture>
     </div>
     <div class="hero__conteudo">
       <h1 class="rv">
