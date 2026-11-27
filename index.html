@@ -151,6 +151,8 @@ p + p{margin-top:16px}
 .promessa{margin:clamp(28px,4.4vh,44px) auto 0;
   font:500 clamp(1.5rem,min(2.5vw,4.6vh),2.4rem)/1.2 var(--f-titulos);color:var(--marfim);text-wrap:balance}
 .promessa em{font-weight:400;color:var(--dourado-claro)}
+/* linha de público: pequena e discreta, para não empurrar a data e o botão para fora do 1.º ecrã */
+.hero__sub{margin:clamp(12px,2vh,18px) auto 0;max-width:34ch;font:400 clamp(.9rem,min(1.1vw,2.1vh),1.05rem)/1.55 var(--f-corpo);color:var(--marfim);opacity:.84;text-wrap:balance}
 .hero__acao{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:clamp(28px,4.4vh,44px)}
 /* data numa linha simples, ladeada por dois filetes curtos */
 .data{display:flex;align-items:center;gap:14px;font:600 .8rem/1.4 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;color:var(--dourado-claro)}
@@ -171,6 +173,7 @@ p + p{margin-top:16px}
   .hero__conteudo{position:relative;width:100%;margin-top:-56px;padding:0 var(--pad) 44px}
   .hero .logo{width:210px;min-width:0;max-width:62vw}
   .hero .promessa{margin-top:18px;font-size:clamp(1.3rem,5.6vw,1.6rem)}
+  .hero__sub{margin-top:10px;font-size:.92rem}
   .hero__acao{margin-top:22px;gap:14px}
 }
 
@@ -404,6 +407,7 @@ p + p{margin-top:16px}
         <img class="logo" src="assets/img/logo-liv.webp" width="599" height="288" alt="">
       </h1>
       <p class="promessa rv" style="--i:1">A tua prosperidade nunca vai além de <em>quem acreditas ser</em></p>
+      <p class="hero__sub rv" style="--i:2">Dois dias presenciais para empresários e líderes que sabem que o negócio cresce até onde cresce quem o lidera.</p>
       <div class="hero__acao rv" style="--i:3">
         <p class="data">27 e 28 de fevereiro de 2027</p>
         <a class="btn btn--grande" href="#inscricao">Quero o meu lugar</a>
@@ -419,13 +423,13 @@ p + p{margin-top:16px}
           <p class="eyebrow rv">O Método LIV</p>
           <h2 class="rv">Tudo começa <em>em quem és</em></h2>
         </div>
-        <p class="lead rv" style="--i:1">Quase nunca é falta de esforço, é a imagem que tens de ti a decidir até onde vais.</p>
+        <p class="lead rv" style="--i:1">Quase nunca é falta de esforço ou de estratégia, é a imagem que tens de ti a decidir até onde vais tu e até onde vai o teu negócio.</p>
       </div>
 
       <ol class="pilares">
-        <li class="rv"><b>L</b><h3>Liberdade</h3><p>Voltas a fazer escolhas a partir de ti, e não do que esperam de ti.</p></li>
-        <li class="rv" style="--i:1"><b>I</b><h3>Identidade</h3><p>Descobres quem és e o padrão que te mantém no mesmo patamar.</p></li>
-        <li class="rv" style="--i:2"><b>V</b><h3>Valor</h3><p>Reconheces o teu valor e deixas de te pôr em segundo plano.</p></li>
+        <li class="rv"><b>L</b><h3>Liberdade</h3><p>Voltas a decidir a partir de ti, na vida e na empresa, e não do que os outros esperam de ti.</p></li>
+        <li class="rv" style="--i:1"><b>I</b><h3>Identidade</h3><p>Descobres quem és como pessoa e como líder, e o padrão que mantém os teus resultados no mesmo patamar.</p></li>
+        <li class="rv" style="--i:2"><b>V</b><h3>Valor</h3><p>Reconheces o teu valor e passas a posicioná-lo com segurança diante da tua equipa, dos teus clientes e do mercado.</p></li>
       </ol>
 
     </div>
@@ -439,8 +443,8 @@ p + p{margin-top:16px}
         <p class="eyebrow rv">Dois dias com a Mafalda</p>
         <h2 class="rv">O que levas <em>destes dois dias</em></h2>
         <ol class="lista">
-          <li class="rv"><p>Clareza sobre quem és e sobre o padrão que te tem segurado.</p></li>
-          <li class="rv" style="--i:1"><p>Uma nova relação com o teu valor, sem precisares de provar nada a ninguém.</p></li>
+          <li class="rv"><p>Clareza sobre quem és e sobre o padrão que tem travado o teu crescimento e o da tua empresa.</p></li>
+          <li class="rv" style="--i:1"><p>Uma nova relação com o teu valor, que se nota na forma como lideras, negocias e te posicionas.</p></li>
           <li class="rv" style="--i:2"><p>Coragem para as próximas decisões, na vida e nos negócios.</p></li>
         </ol>
         <a class="btn rv" href="#inscricao">Quero o meu lugar</a>
@@ -514,7 +518,7 @@ p + p{margin-top:16px}
         </div>
 
         <div class="bilhete bilhete--destaque rv" style="--i:1">
-          <p class="bilhete__faixa">Para ti e para quem vem contigo</p>
+          <p class="bilhete__faixa">Para ti e para quem lidera contigo</p>
           <div class="bilhete__topo">
             <p class="bilhete__tipo">Bilhete duplo</p>
             <p class="bilhete__preco">79,97 €</p>
