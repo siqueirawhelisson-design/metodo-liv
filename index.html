@@ -221,10 +221,10 @@ p + p{margin-top:16px}
 /* media em destaque: nomes em serif grande, separados por filetes, como uma faixa de "visto em" */
 .media{margin-top:34px;padding-top:22px;border-top:1px solid var(--linha)}
 .media span{font:600 .72rem/1.6 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;color:var(--marsala)}
-/* logótipos monocromáticos a vinho; alturas compensadas para terem o mesmo peso ótico */
+/* logótipos nas cores originais de cada marca (pedido dele); alturas compensadas para terem o mesmo peso ótico */
 .media ul{list-style:none;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:clamp(10px,2.4vw,28px);margin:16px 0 0;padding:0}
 .media li{display:flex;align-items:center;flex:0 1 auto;min-width:0}
-.media img{display:block;width:auto;max-width:100%;height:calc(var(--h,30px)*var(--k,.86));opacity:.88}
+.media img{display:block;width:auto;max-width:100%;height:calc(var(--h,30px)*var(--k,.86))}
 @media (max-width:1100px){.media{--k:.74}}
 @media (max-width:560px){.media{--k:.56}}
 .testemunhos{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
@@ -365,8 +365,6 @@ p + p{margin-top:16px}
   /* menu: sublinhado que cresce da esquerda */
   .topo__nav a{background:linear-gradient(currentColor,currentColor) left bottom/0 1px no-repeat;padding-bottom:4px;transition:background-size .4s var(--ease-suave),opacity .3s}
   .topo__nav a:hover{background-size:100% 1px}
-  .media img{transition:opacity .3s}
-  .media li:hover img{opacity:1}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -470,7 +468,7 @@ p + p{margin-top:16px}
           <div><strong>U. Virgínia</strong><span>formação em marca pessoal</span></div>
           <div><strong>2 livros</strong><span>publicados</span></div>
         </div>
-        <!-- Logótipos tirados de mafaldaalmeida.com ("Parceiros de valor") e passados a vinho em PNG/WebP transparente -->
+        <!-- Logótipos tirados de mafaldaalmeida.com ("Parceiros de valor") , cores originais, recortados e sem fundo -->
         <div class="media rv">
           <span>Já esteve na</span>
           <ul>
