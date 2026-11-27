@@ -219,11 +219,11 @@ p + p{margin-top:16px}
 .media{margin-top:34px;padding-top:22px;border-top:1px solid var(--linha)}
 .media span{font:600 .72rem/1.6 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;color:var(--marsala)}
 /* logótipos monocromáticos a vinho; alturas compensadas para terem o mesmo peso ótico */
-.media ul{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:22px 0;margin:16px 0 0;padding:0}
-.media li{display:flex;align-items:center;padding:0 26px;border-left:1px solid var(--linha)}
-.media li:first-child{padding-left:0;border-left:0}
-.media img{display:block;width:auto;height:var(--h,30px);opacity:.88}
-@media (max-width:560px){.media li{padding:0 16px}.media img{height:calc(var(--h,30px)*.82)}}
+.media ul{list-style:none;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:clamp(10px,2.4vw,28px);margin:16px 0 0;padding:0}
+.media li{display:flex;align-items:center;flex:0 1 auto;min-width:0}
+.media img{display:block;width:auto;max-width:100%;height:calc(var(--h,30px)*var(--k,.86));opacity:.88}
+@media (max-width:1100px){.media{--k:.74}}
+@media (max-width:560px){.media{--k:.56}}
 .testemunhos{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
 .testemunhos blockquote{border-top:1px solid var(--linha);padding-top:18px}
 .testemunhos p{font:italic 400 1.12rem/1.4 var(--f-titulo);color:var(--vinho)}
