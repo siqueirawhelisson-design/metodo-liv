@@ -219,9 +219,9 @@ p + p{margin-top:16px}
 .citacao{margin-top:26px;padding-left:22px;border-left:1px solid var(--dourado);font:italic 400 clamp(1.2rem,1.8vw,1.5rem)/1.4 var(--f-titulo);color:var(--vinho);max-width:30ch}
 .mentora .bio{margin-top:26px}
 .mentora .bio+.bio{margin-top:14px}
-.factos{display:flex;flex-wrap:wrap;gap:22px 0;margin-top:34px;border-top:1px solid var(--linha);padding-top:22px}
+.factos{display:grid;grid-template-columns:repeat(2,auto);justify-content:start;gap:22px 0;margin-top:34px;border-top:1px solid var(--linha);padding-top:22px}
 .factos div{padding:0 24px;border-left:1px solid var(--linha)}
-.factos div:first-child{padding-left:0;border-left:0}
+.factos div:nth-child(odd){padding-left:0;border-left:0}
 .factos strong{display:block;font:400 clamp(1.35rem,2vw,1.7rem)/1.15 var(--f-titulo);color:var(--vinho)}
 .factos span{font-size:.82rem;color:var(--texto-suave)}
 /* media em destaque: nomes em serif grande, separados por filetes, como uma faixa de "visto em" */
@@ -472,6 +472,7 @@ p + p{margin-top:16px}
           <!-- PENDENTE: números de impacto reais (pessoas acompanhadas, eventos, anos) podem entrar aqui -->
           <div><strong>Oxford</strong><span>formação em liderança</span></div>
           <div><strong>U. Virgínia</strong><span>formação em marca pessoal</span></div>
+          <div><strong>U. Nova de Lisboa</strong><span>formação em Voice Leadership</span></div>
           <div><strong>2 livros</strong><span>publicados</span></div>
         </div>
         <!-- Logótipos tirados de mafaldaalmeida.com ("Parceiros de valor") , cores originais, recortados e sem fundo -->
